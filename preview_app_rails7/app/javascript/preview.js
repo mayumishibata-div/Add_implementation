@@ -16,6 +16,14 @@ document.addEventListener('turbo:load', function(){
       console.log("input要素で値の変化が起きました");
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
-    console.log(blob);
+      console.log(blob);
+
+      // 画像を表示するためのdiv要素を生成
+      const previewWrapper = document.createElement('div');
+      previewWrapper.setAttribute('class', 'preview');
+
+      // 表示する画像を生成
+      const previewImage = document.createElement('img');
+      previewImage.setAttribute('class', 'preview-image');
     });
 });
