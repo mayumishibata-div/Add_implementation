@@ -31,7 +31,8 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:text, :image)
+    params.require(:post).permit(:text, {images: []})
+    # permitの中でも、images: []の記述は必ず最後に記述しないとエラーになる
   end
 
   def set_post
