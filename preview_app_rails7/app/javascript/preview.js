@@ -58,10 +58,10 @@ document.addEventListener('turbo:load', function(){
     console.log( dataIndex);
 
     // 古いプレビューが存在する場合は削除
-    const alreadyPreview = document.querySelector('.preview');
-      if (alreadyPreview) {
-        alreadyPreview.remove();
-      };
+    // const alreadyPreview = document.querySelector('.preview');
+      // if (alreadyPreview) {
+        // alreadyPreview.remove();
+      // };
       console.log("input要素で値の変化が起きました");
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
