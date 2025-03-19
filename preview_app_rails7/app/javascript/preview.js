@@ -49,6 +49,14 @@ document.addEventListener('turbo:load', function(){
     const fileFieldsArea = document.querySelector('.click-upload');
     fileFieldsArea.appendChild(newFileField);
   };
+
+  // 指定したdata-indexを持つプレビューとfile_fieldを削除する
+  const deleteImage = (dataIndex) => {
+    const deletePreviewImage = document.querySelector(`.preview[data-index="${dataIndex}"]`);
+    deletePreviewImage.remove();
+    const deleteFileField = document.querySelector(`input[type="file"][data-index="${dataIndex}"]`);
+    deleteFileField.remove();
+  };
   
   // input要素で値の変化が起きた際に呼び出される関数の中身
   const changedFileField = (e) => {
@@ -64,6 +72,13 @@ document.addEventListener('turbo:load', function(){
       // };
       console.log("input要素で値の変化が起きました");
       const file = e.target.files[0];
+
+      // fileが空 = 何も選択しなかったのでプレビュー等を削除して終了する
+      if (!file) {
+        deleteImage(dataIndex);
+        return null;
+      };
+
       const blob = window.URL.createObjectURL(file);
       console.log(blob);
 
